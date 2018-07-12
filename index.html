@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="./css/img/icono.png" rel="icon" type="image/png" />
+    <title>Estacionamiento</title>
+    <!-- JQUERY -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP  -->
+    <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- BOOTSTRAP VALIDATOR  -->
+    <script type="text/javascript" src="./bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+
+   
+
+    <!-- SWEET ALERT -->
+    <!-- <script src="bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script> -->
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+
+
+    <!-- Google Fonts -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'> -->
+    <link href='./css/index.css' rel='stylesheet' type='text/css'>
+    <script src="./js/index.js" type="text/javascript"></script>
+
+</head>
+
+<body class="swal2-shown" background="./css/img/estacionamiento_login.jpg" style="background-size:100% 100%">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div id="loginModal">
+                    <div class="modal-header">
+                        <h3>
+                            <img src="./css/img/cabecera.gif" style="width:544px">
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="well">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#login" data-toggle="tab">Ingresar</a>
+                                </li>
+                                <li>
+                                    <a href="#create" data-toggle="tab">Registrarse</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane active in" id="login">
+                                    <!-- FORMULARIO LOGIN -->
+                                    <form class="form-horizontal" id="FormLogin"  method="post" >
+                                        <fieldset>
+                                            <div id="legend">
+                                                <legend class="">Ingresar</legend>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="col-md-3 input-lg">Email:</label>
+                                                <div class="inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-envelope"></i>
+                                                        </span>
+                                                        <input value="diegogalvan@gmail.com" type="email" class="form-control input-lg" id="loginemail" placeholder="Ingrese su correo" name="loginemail" id="loginemail">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loginpass" class="col-md-3 input-lg">Contraseña</label>
+                                                <div class="inputGroupContainer">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-asterisk"></i>
+                                                        </span>
+                                                        <input value="admin" type="password" id="loginpass" name="loginpass" placeholder="Contraseña" class="form-control input-lg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <div class="controls">
+                                                    <button type="submit" class="btn btn-success">Ingresar</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+                                </div>
+                                <div class="tab-pane fade" id="create">
+                                    <!-- FORMULARIO REGISTRO -->
+                                    <form id="FormRegistro" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="name" class="cols-sm-2 control-label">Nombre y Apellido</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-user fa" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese su Nombre" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email" class="cols-sm-2 control-label">Email</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" name="email" id="email" placeholder="Ingrese su Email" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="sexo" class="cols-sm-2 control-label">Sexo:</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+                                                    </span>
+                                                    <select required class="form-control" name="sexo" id="sexo">
+                                                        <option disabled selected>...</option>
+                                                        <option>Masculino</option>
+                                                        <option>Femenino</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="turno" class="cols-sm-2 control-label">Turno:</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-hourglass" aria-hidden="true"></i>
+                                                    </span>
+                                                    <select required class="form-control" name="turno" id="turno">
+                                                        <option disabled selected>...</option>
+                                                        <option>Mañana</option>
+                                                        <option>Tarde</option>
+                                                        <option>Noche</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="photo" class="cols-sm-2 control-label">Foto de Perfil</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-photo fa" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="file" class="form-control" id="foto" name="foto" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password" class="cols-sm-2 control-label">Contraseña</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" name="clave" id="clave" placeholder="Ingrese su Contraseña" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password" class="cols-sm-2 control-label">Repita su Contraseña</label>
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" name="Rclave" id="Rclave" placeholder="Repita su Contraseña" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div>
+                                            <button class="btn btn-primary">Registrarse</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

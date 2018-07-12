@@ -1,0 +1,16 @@
+{
+  "name": "Final",
+  "authors": [
+    "DIEGO galvan00diego@gmail.com"
+  ],
+  "description": "Utilizamos packages de bower, generamos jwt, interactuando con el localstorage. Validamos informacion de formularios con bootstrap validator",
+  "main": "Index",
+  "license": "MIT",
+  "homepage": "index",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrapvalidator": "bootstrapValidator#^0.5.3",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "components-font-awesome": "^4.7.0"
+  }
+}

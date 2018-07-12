@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estacionamiento</title>
+    <!-- JQUERY -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- BOOTSTRAP  -->
+    <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- BOOTSTRAP VALIDATOR  -->
+    <script type="text/javascript" src="./bower_components/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+    <!-- <script defer src="./fontawesome-free-5.0.6/svg-with-js/js/fontawesome-all.js"></script> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <!-- SWEET ALERT -->
+    <!-- <script src="bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script> -->
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+    <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+
+    <script src="./js/principal.js" type="text/javascript"></script>
+</head>
+
+<body background="./css/img/fondo_minimal.jpg" style="background-size: 100% 100%">
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" disabled>Estacionamiento</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="index.html">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="listas.html">Listados</a>
+                        </li>
+                        <li>
+                            <a href="#">Administracion</a>
+                        </li>
+                        <li>
+                            <a id="fechaingreso"></a>
+                        </li>
+                        <li>
+                            <a id="reloj"></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a>
+                                <img id="userimg" src="./css/img/principal_home.jpg" class="img-circle" style="width:24px;height:24px">
+                            </a>
+                        </li>
+                        <li>
+                            <a>ID: </a>
+                        </li>
+                        <li>
+                            <a id="id"></a>
+                        </li>
+                        <li>
+                            <a href="#" id="useremail">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="Salir()">
+                                <span class="glyphicon glyphicon-log-in"></span> Salir</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <!-- BOTON INGRESAR VEHICULO-->
+            <button type="button" class="btn btn-success btn-lg col-lg-3" data-toggle="modal" data-target="#myModal">Ingresar Vehiculo</button>
+            <!--- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   - -  - -->
+
+            <!-- - - - - - - - VENTANA MODAL - - - - - - - - - - - - - - - -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content" style="background-image:url('./css/img/modal_v2.jpg');background-size: 100% 100%">
+                        <!--REVISAR FONDO-->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="color:white">Ingreso de Vehiculos</h4>
+                        </div>
+                        <!-- FORMULARIO INGRESO DE AUTOS -->
+                        <div class="modal-body">
+                            <form class="form-inline" id="FormIngreso" name="FormIngreso" method="post">
+                                <fieldset>
+                                    <div class="col-lg-3 form-group">
+                                        <label for="patente" class="col-lg-12 input-lg">Patente:</label>
+                                        <div class="inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-barcode"></i>
+                                                </span>
+                                                <input type="text" class="form-control input-md" id="patente" placeholder="Ingrese patente" name="patente">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 form-group">
+                                        <label for="Marca" class="col-lg-12 input-lg">Marca:</label>
+                                        <div class="inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-car"></i>
+                                                </span>
+                                                <select name="marca" class="form-control input-md">
+                                                    <option selected value="0" disabled>Elija una marca</option>
+                                                    <option value="alfa_romeo">Alfa Romeo</option>
+                                                    <option value="audi">Audi</option>
+                                                    <option value="BMW">BMW</option>
+                                                    <option value="chevrolet">Chevrolet</option>
+                                                    <option value="citroen">Citroen</option>
+                                                    <option value="fiat">FIAT</option>
+                                                    <option value="ford">Ford</option>
+                                                    <option value="honda">Honda</option>
+                                                    <option value="hyundai">Hyundai</option>
+                                                    <option value="jeep">Jeep</option>
+                                                    <option value="kya">KYA</option>
+                                                    <option value="mercedes_benz">Mercedes Benz</option>
+                                                    <option value="nissan">Nissan</option>
+                                                    <option value="peugeot">Peugeot</option>
+                                                    <option value="Renault">Renault</option>
+                                                    <option value="toyota">Toyota</option>
+                                                    <option value="volkswagen">Volkswagen</option>
+                                                    <option value="volvo">Volvo</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 form-group">
+                                        <label for="Color" class="col-lg-12 input-lg">Color:</label>
+                                        <div class="inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-tint"></i>
+                                                </span>
+                                                <select name="color" class="form-control input-md">
+                                                    <option selected value="0" disabled>Elija un color</option>
+                                                    <option value="blanco">Blanco</option>
+                                                    <option style="background-color: black;color:white" value="negro">Negro</option>
+                                                    <option style="background-color: rgba(71, 64, 64, 0.445);color:white" value="gris">Gris</option>
+                                                    <option style="background-color: rgb(211, 16, 16);color:white" value="rojo">Rojo</option>
+                                                    <option style="background-color: rgb(252, 99, 10);color:white" value="naranja">Naranja</option>
+                                                    <option style="background-color: rgb(245, 230, 23);color:white" value="amarillo">Amarillo</option>
+                                                    <option style="background-color: rgb(62, 8, 255);color:white" value="azul">Azul</option>
+                                                    <option style="background-color: rgb(28, 173, 240);color:white" value="celeste">Celeste</option>
+                                                    <option style="background-color: rgb(40, 158, 16);color:white" value="verde">Verde</option>
+                                                    <option style="background-color: rgb(105, 59, 21);color:white" value="marron">Marron</option>
+                                                    <option style="background-color: rgb(152, 36, 230);color:white" value="violeta">Violeta</option>
+                                                    <option style="background-color: rgb(212, 54, 199);color:white" value="rosa">Rosa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 form-group">
+                                        <label for="photo" class="cols-lg-12 input-lg">Foto del Vehiculo</label>
+                                        <div class="inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-camera-retro" aria-hidden="true"></i>
+                                                </span>
+                                                <input type="file" class="form-control input-md" id="foto" name="foto" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3 form-group">
+                                        <label for="espacio" class="cols-lg-12 input-lg">Espacio libre:</label>
+                                        <span id="espacio" name="espacio" style="text-align:left"></span>
+                                    </div>
+                                </fieldset>
+                                <!-- FINAL DEL FORMULARIO -->
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="submit" class="btn btn-success">Aceptar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- - - - - - - CIERRE VENTANA MODAL - - - - - - - - - - - - - -->
+
+            <!-- MODAL ESPACIOS -->
+            <!-- Modal -->
+            <div class="modal fade" id="ModalEspacios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            <h5 class="modal-title" id="HEspacio"></h5>
+                            
+                        </div>
+                        <div class="modal-body">
+                                <div class="media">
+                                        <div class="media-left">
+                                          <img src="./php/clases/img/libre.jpg" class="media-object" style="width:150px" id="imgFoto">
+                                        </div>
+                                        <div class="media-body">
+                                          <h4 class="media-heading" id="HPatente"></h4>
+                                          <h4 class="media-heading" id="HMarca"></h4>
+                                          <h4 class="media-heading" id="HColor"></h4>
+                                          <h4 class="media-heading" id="HFechaIngreso"></h4>
+                                        </div>
+                                      </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="btnEgresar">Egresar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /MODAL ESPACIOS -->
+            <div class="col-lg-3"></div>
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">PISO 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">PISO 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">PISO 3</a>
+                </li>
+            </ul>
+            <!-- Tab panels -->
+            <div class="row col-lg-6"></div>
+            <div class="tab-content card">
+                <!--Panel 1-->
+                <div class="tab-pane fade active in" id="panel1" role="tabpanel">
+                    <table class="col-lg-6" style="text-align:center;height:150px">
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(1)" id="espacio1" >
+                                    <i class="fas fa-wheelchair"></i>ESPACIO 01</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(2)" id="espacio2">
+                                    <i class="fas fa-wheelchair"></i>ESPACIO 02</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(3)" id="espacio3">
+                                    <i class="fas fa-wheelchair"></i>ESPACIO 03</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(4)" id="espacio4">ESPACIO 04</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(5)" id="espacio5">ESPACIO 05</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(6)" id="espacio6">ESPACIO 06</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--/.Panel 1-->
+                <!--Panel 2-->
+                <div class="tab-pane fade" id="panel2" role="tabpanel">
+                    <table class="col-lg-6" style="text-align:center;">
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(7)" id="espacio7">ESPACIO 07</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(8)" id="espacio8">ESPACIO 08</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(9)" id="espacio9">ESPACIO 09</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(10)" id="espacio10">ESPACIO 10</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(11)" id="espacio11">ESPACIO 11</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(12)" id="espacio12">ESPACIO 12</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--/.Panel 2-->
+                <!--Panel 3-->
+                <div class="tab-pane fade" id="panel3" role="tabpanel">
+                    <table class="col-lg-6" style="text-align:center;">
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(13)" id="espacio13">ESPACIO 13</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(14)" id="espacio14">ESPACIO 14</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(15)" id="espacio15">ESPACIO 15</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(16)" id="espacio16">ESPACIO 16</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(17)" id="espacio17">ESPACIO 17</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#ModalEspacios" onclick="Modal(18)" id="espacio18">ESPACIO 18</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!--/.Panel 3-->
+            </div>
+        </div>
+    </div>
+    <h1 hidden id="tiempo"></h1>
+</body>
+
+</html>
